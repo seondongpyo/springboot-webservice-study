@@ -59,8 +59,8 @@ class PostRepositoryTest {
         System.out.println("savedPost is created at " + savedPost.getCreatedDate());
         System.out.println("savedPost is modified at " + savedPost.getModifiedDate());
 
-        assertThat(savedPost.getCreatedDate()).isAfter(currentDateTime);
-        assertThat(savedPost.getModifiedDate()).isAfter(currentDateTime);
+        assertThat(savedPost.getCreatedDate()).isAfterOrEqualTo(currentDateTime);
+        assertThat(savedPost.getModifiedDate()).isAfterOrEqualTo(currentDateTime);
     }
 
 }
