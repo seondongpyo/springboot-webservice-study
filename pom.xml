@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.study.springboot</groupId>
-    <artifactId>study</artifactId>
+    <artifactId>springboot-webservice-study</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Spring Boot Study</name>
     <description>Spring Boot Web Service Demo Project for Study</description>
