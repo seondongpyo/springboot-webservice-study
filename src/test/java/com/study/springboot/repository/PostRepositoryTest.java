@@ -1,31 +1,34 @@
 package com.study.springboot.repository;
 
 import com.study.springboot.domain.Post;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@RunWith(SpringRunner.class)
 @SpringBootTest
-class PostRepositoryTest {
+public class PostRepositoryTest {
 
     @Autowired
     private PostRepository postRepository;
 
-    @AfterEach
-    void cleanUp() {
+//    @AfterEach
+    @After
+    public void cleanUp() {
         postRepository.deleteAll();
     }
 
     @Test
-    @DisplayName("게시글 저장")
-    void savePost() {
+//    @DisplayName("게시글 저장")
+    public void savePost() {
         Post post = Post.builder()
                         .title("테스트")
                         .content("테스트")
@@ -42,8 +45,8 @@ class PostRepositoryTest {
     }
 
     @Test
-    @DisplayName("JPA Auditing 기능 테스트")
-    void jpaAuditingTest() {
+//    @DisplayName("JPA Auditing 기능 테스트")
+    public void jpaAuditingTest() {
         LocalDateTime currentDateTime = LocalDateTime.now();
         Post post = Post.builder()
                         .title("title")

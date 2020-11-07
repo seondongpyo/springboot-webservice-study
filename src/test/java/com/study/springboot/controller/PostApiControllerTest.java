@@ -5,16 +5,18 @@ import com.study.springboot.domain.Post;
 import com.study.springboot.dto.PostSaveRequestDto;
 import com.study.springboot.dto.PostUpdateRequestDto;
 import com.study.springboot.repository.PostRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
@@ -27,8 +29,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class PostApiControllerTest {
+public class PostApiControllerTest {
 
     @LocalServerPort
     private int port;
@@ -44,7 +47,8 @@ class PostApiControllerTest {
 
     private MockMvc mvc;
 
-    @BeforeEach
+//    @BeforeEach
+    @Before
     public void setup() {
         mvc = MockMvcBuilders
                 .webAppContextSetup(context)
@@ -52,15 +56,16 @@ class PostApiControllerTest {
                 .build();
     }
 
-    @AfterEach
+//    @AfterEach
+    @After
     public void tearDown() {
         postRepository.deleteAll();
     }
 
     @Test
     @WithMockUser(roles = "USER")
-    @DisplayName("게시물 저장")
-    void savePost() throws Exception {
+//    @DisplayName("게시물 저장")
+    public void savePost() throws Exception {
         String title = "title";
         String content = "content";
         String author = "author";
@@ -88,8 +93,8 @@ class PostApiControllerTest {
 
     @Test
     @WithMockUser(roles = "USER")
-    @DisplayName("게시물 수정")
-    void updatePost() throws Exception {
+//    @DisplayName("게시물 수정")
+    public void updatePost() throws Exception {
         Post post = Post.builder()
                         .title("title")
                         .content("content")
