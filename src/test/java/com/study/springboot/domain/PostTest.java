@@ -1,17 +1,15 @@
 package com.study.springboot.domain;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(SpringRunner.class)
-public class PostTest {
+class PostTest {
 
     @Test
-//    @DisplayName("Post 엔티티 테스트")
-    public void postEntity() {
+    @DisplayName("Post 엔티티 테스트")
+    void postEntity() {
         Post post = Post.builder()
                         .title("Book")
                         .content("Java")

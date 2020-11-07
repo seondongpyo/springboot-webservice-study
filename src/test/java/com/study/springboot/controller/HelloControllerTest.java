@@ -1,33 +1,31 @@
 package com.study.springboot.controller;
 
 import com.study.springboot.config.auth.SecurityConfig;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@RunWith(SpringRunner.class)
 @WebMvcTest(controllers = HelloController.class,
         excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class)}
 )
-public class HelloControllerTest {
+class HelloControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
     @Test
     @WithMockUser(roles = "USER")
-//    @DisplayName("/hello 테스트")
-    public void hello() throws Exception {
+    @DisplayName("/hello 테스트")
+    void hello() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/hello"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Hello Spring Boot!"));
@@ -35,8 +33,8 @@ public class HelloControllerTest {
 
     @Test
     @WithMockUser(roles = "USER")
-//    @DisplayName("/hello/dto 테스트")
-    public void helloDto() throws Exception {
+    @DisplayName("/hello/dto 테스트")
+    void helloDto() throws Exception {
         mvc.perform(MockMvcRequestBuilders
                 .get("/hello/dto")
                 .param("name", "hello") // param()은 String만 가능하다
