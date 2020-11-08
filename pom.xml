@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.study.springboot</groupId>
     <artifactId>springboot-webservice-study</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>Spring Boot Study</name>
     <description>Spring Boot Web Service Demo Project for Study</description>
 
