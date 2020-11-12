@@ -9,7 +9,7 @@ function switch_proxy() {
 
     echo "> 전환할 port : $IDLE_PORT"
     echo "> port 전환"
-    echo "set \$service_url http://127.0.0.1:$IDLE_PORT};" | sudo tee /etc/nginx/conf.d/service-url.inc
+    echo "set \$service_url http://127.0.0.1:${IDLE_PORT};" | sudo tee /etc/nginx/conf.d/service-url.inc
     # ->  하나의 문장을 만들어 파이프라인(|)으로 넘겨주기 위해 echo를 사용함
     #     엔진엑스가 변경할 프록시 주소를 생성함
     #     쌍따옴표("")를 사용해야 하며, 사용하지 않으면 $service_url을 그대로 인식하지 못하고 변수를 찾게 됨
