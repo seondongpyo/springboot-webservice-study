@@ -29,10 +29,10 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY # Travis repo setting 설정값
     bucket: springboot-webservice-sdpyo-build # S3 버킷
     region: ap-northeast-2
-    cleanup: false
+    skip_cleanup: true
     acl: private # zip 파일 접근을 private으로 설정
     local_dir: deploy # before_deploy에서 생성한 디렉토리
-    wait_until_deployed: true
+    wait-until-deployed: true
 
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY
@@ -43,7 +43,7 @@ deploy:
     application: springboot-webservice-study # 웹 콘솔에서 등록한 CodeDeploy 애플리케이션
     deployment_group: springboot-webservice-study-group # 웹 콘솔에서 등록한 CodeDeploy 배포 그룹
     region: ap-northeast-2
-    wait_until_deployed: true
+    wait-until-deployed: true
 
 # CI 실행 완료 시 메일로 알람
 notifications:
